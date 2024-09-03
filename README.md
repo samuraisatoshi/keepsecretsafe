@@ -27,6 +27,36 @@ dependencies:
   flutter_dotenv: ^5.1.0
 ```
 
+## Next tips from [CodeWithAndrea](https://codewithandrea.com/tips/socket-exception-connection-failed-macos/)
+
+### Running in macOS
+
+macOS applications are sandboxed by default, and the `SocketException` error happens if you haven't added the required entitlements.
+
+To fix this, open the file called `macos/Runner/DebugProfile.entitlements` and add the following:
+
+```xml
+<key>com.apple.security.network.client</key>
+<true/>
+```
+
+### What about Android ?
+On Android, it __used to be necessary__ to add the INTERNET permission to the `AndroidManifest.xml` file:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+But according to [this answer](https://stackoverflow.com/a/24107965/436422), this is no longer needed since most apps need internet access.
+
+### What about iOS ?
+On iOS, the app will run just fine (no extra configuration is needed), provided that you're connecting to a secure `https` endpoint.
+
+Though keep in mind that in certain cases, you may need to customise the app transport security settings as explained here:
+
+* [NSAppTransportSecurity | developer.apple.com](https://developer.apple.com/documentation/bundleresources/information_property_list/nsapptransportsecurity)
+
+END OF TIPS
+---
 Then, run `flutter pub get` to install the dependencies.
 
 # Usage 🚀

@@ -5,8 +5,10 @@ import 'src/authentication_service.dart';
 import 'src/secret_manager.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   final authenticationService = AuthenticationService(
-    keyFilePath: './key.json',
+    keyFilePath: 'assets/key.json',
   );
 
   await authenticationService.init();
