@@ -1,16 +1,11 @@
-# keepsecretsafe
-Welcome to KeepSecretSafe, the ultimate solution for securely accessing Google Cloud Secret Manager from your Flutter applications! 🎉
-=======
-# Join the Security Revolution! 🌟
-By using **`KeepSecretSafe`**, you're not just securing your apps; you're joining a community of developers committed to building secure, scalable, and efficient software. Let's make the digital world a safer place, one app at a time! 💼🔐✨
-
 # KeepSecretSafe Library for Flutter 🚀🔒
 
 Welcome to KeepSecretSafe, the ultimate solution for securely accessing Google Cloud Secret Manager from your Flutter applications! 🎉
 
-## Why KeepSecretSafe? 🤔
-
 In today's digital age, security is paramount. As developers, we need to ensure that our applications are secure, scalable, and efficient. KeepSecretSafe is designed to help you achieve just that by providing a seamless and secure way to access secrets stored in Google Cloud Secret Manager. Let's build secure apps together! 💪🔐
+=======
+# Join the Security Revolution! 🌟
+By using **`KeepSecretSafe`**, you're not just securing your apps; you're joining a community of developers committed to building secure, scalable, and efficient software. Let's make the digital world a safer place, one app at a time! 💼🔐✨
 
 ## Features ✨
 
