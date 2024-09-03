@@ -217,4 +217,4 @@ Contributions are welcome! Please create an issue or submit a pull request with 
 
 # License 📄
 This project is licensed under the MIT License – see the LICENSE file for details.
->>>>>>> 4c7ca45 (Initial commit)
+
