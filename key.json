@@ -1,0 +1,2 @@
+prefereable not use here. instead use ci/cd pipeline do inject the file.
+But, if you don't have build pipeline, then just get your key.json over here.
