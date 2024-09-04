@@ -1,3 +1,5 @@
+// lib/src/exceptions.dart
+
 /// Base exception class for Secret Manager related errors.
 class SecretManagerException implements Exception {
   final String message;

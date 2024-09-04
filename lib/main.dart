@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:keepsecretsafe/keepsecretsafe.dart';
+// lib/main.dart
 
+import 'package:flutter/material.dart';
 import 'src/authentication_service.dart';
 import 'src/secret_manager.dart';
 

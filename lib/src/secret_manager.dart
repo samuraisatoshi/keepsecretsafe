@@ -1,3 +1,5 @@
+// lib/src/secret_manager.dart
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'authentication_service.dart';
@@ -21,8 +23,9 @@ class SecretManager {
     try {
       var token = await authenticationService.getToken();
       var secrets = <String, String>{};
-
+      _logger.i("Secret Names: $secretNames");
       for (var secretName in secretNames) {
+        _logger.i('Fetching secret: $secretName');
         var url = Uri.parse(
             'https://secretmanager.googleapis.com/v1/projects/${authenticationService.projectId}/secrets/$secretName/versions/latest:access');
         var response =
