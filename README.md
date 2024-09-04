@@ -25,6 +25,12 @@ dependencies:
   logger: ^2.4.0
   mockito: ^5.4.4
   flutter_dotenv: ^5.1.0
+  universal_io: ^2.2.2
+  google_secret_manager: ^1.1.0
+
+flutter:
+  assets:
+    - assets/key.json
 ```
 
 ## Next tips from [CodeWithAndrea](https://codewithandrea.com/tips/socket-exception-connection-failed-macos/)
@@ -72,39 +78,39 @@ Use the `key.json` file to load the credentials:
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:keepsecretsafe/keepsecretsafe.dart';
+import 'src/secret_service.dart';
+import 'package:logger/logger.dart';
 
 void main() async {
-  final authenticationService = AuthenticationService(
-    keyFilePath: './key.json',
+  WidgetsFlutterBinding.ensureInitialized();
+  final Logger _logger = Logger();
+
+  final secretManager = SecretService(
+    keyFilePath: 'assets/key.json',
   );
 
-  await authenticationService.init();
-
-  final secretManager = SecretManager(
-    authenticationService: authenticationService,
-  );
+  await secretManager.init();
 
   try {
-    final secrets = await secretManager.getSecrets(['api_key', 'db_password']);
-    print('API Key: ${secrets['api_key']}');
-    print('DB Password: ${secrets['db_password']}');
+    final secrets =
+        await secretManager.getSecretData(secretName: 'keep-secret-safe');
+    _logger.i(secrets);
   } catch (e) {
-    print('Failed to fetch secrets: $e');
+    _logger.e('Failed to fetch secrets: $e');
   }
 }
 ```
 ## Step 3: Fetch Secrets 🔍
 Use the getSecrets method of SecretManager to fetch secrets from Google Cloud Secret Manager.
-
+The returned data will be a String. If you are expecting a JSON you need to convert into it.
 ```dart
-try {
-  final secrets = await secretManager.getSecrets(['api_key', 'db_password']);
-  print('API Key: ${secrets['api_key']}');
-  print('DB Password: ${secrets['db_password']}');
-} catch (e) {
-  print('Failed to fetch secrets: $e');
-}
+  try {
+    final secrets =
+        await secretManager.getSecretData(secretName: 'keep-secret-safe');
+    _logger.i(secrets);
+  } catch (e) {
+    _logger.e('Failed to fetch secrets: $e');
+  }
 ```
 # Error Handling 🚨
 The library provides detailed error handling and logging for easier debugging.
