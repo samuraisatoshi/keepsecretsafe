@@ -1,2 +1,0 @@
-It'd be best not to be used here. Instead, use the ci/cd pipeline to inject the file.
-But if you don't have a build pipeline, then just get your key.json over here.

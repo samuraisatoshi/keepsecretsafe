@@ -10,8 +10,8 @@ class SecretManagerException implements Exception {
 }
 
 /// Exception class for authentication errors.
-class AuthenticationException extends SecretManagerException {
-  AuthenticationException(String message) : super(message);
+class SecretServiceException extends SecretManagerException {
+  SecretServiceException(String message) : super(message);
 }
 
 /// Exception class for cases where a secret is not found.

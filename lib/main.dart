@@ -1,27 +1,22 @@
-// lib/main.dart
-
 import 'package:flutter/material.dart';
-import 'src/authentication_service.dart';
-import 'src/secret_manager.dart';
+import 'src/secret_service.dart';
+import 'package:logger/logger.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final Logger _logger = Logger();
 
-  final authenticationService = AuthenticationService(
+  final secretManager = SecretService(
     keyFilePath: 'assets/key.json',
   );
 
-  await authenticationService.init();
-
-  final secretManager = SecretManager(
-    authenticationService: authenticationService,
-  );
+  await secretManager.init();
 
   try {
-    final secrets = await secretManager.getSecrets(['api_key', 'db_password']);
-    print('API Key: ${secrets['api_key']}');
-    print('DB Password: ${secrets['db_password']}');
+    final secrets =
+        await secretManager.getSecretData(secretName: 'keep-secret-safe');
+    _logger.i(secrets);
   } catch (e) {
-    print('Failed to fetch secrets: $e');
+    _logger.e('Failed to fetch secrets: $e');
   }
 }
